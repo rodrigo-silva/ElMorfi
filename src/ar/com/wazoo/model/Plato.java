@@ -40,4 +40,7 @@ public class Plato {
       return sb.toString();
    }
 
+   public enum Tipo {
+      VERDURA, CARNE, PASTA
+   }
 }

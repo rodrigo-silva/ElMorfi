@@ -1,18 +1,23 @@
 package ar.com.wazoo;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
+
+import org.apache.commons.io.FileUtils;
 
 import ar.com.wazoo.model.Ingrediente;
 import ar.com.wazoo.model.Plato;
 
 import com.google.common.base.Preconditions;
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Maps;
 
 public class Application {
 
-   public static void main(final String[] args) {
+   public static void main(final String[] args) throws Exception {
       if (args.length > 0) {
          if (args[0].equals("-c")) {
             if (args.length > 3) {
@@ -31,8 +36,19 @@ public class Application {
 
    }
 
+   /**
+    *
+    * @param semana
+    * @param dia
+    * @param maniana
+    * @param semana2
+    * @param dia2
+    * @param maniana2
+    * @param soloStockeable
+    * @throws IOException
+    */
    private static void mostrarCompra(final int semana, final int dia, final boolean maniana, final int semana2, final int dia2,
-            final boolean maniana2, final boolean soloStockeable) {
+            final boolean maniana2, final boolean soloStockeable) throws IOException {
 
       int from = (semana - 1) * 14 + dia * 2 - 2;
       if (!maniana) {
@@ -44,45 +60,75 @@ public class Application {
       if (!maniana2) {
          to++;
       }
+      System.out.println(String.format("Desde (%s, %s, %s) hasta (%s, %s, %s)", semana, dia, maniana ? "Dia" : "Noche", semana2, dia2,
+               maniana2 ? "Dia" : "Noche"));
       printCompra(from, to, soloStockeable);
 
    }
 
    /**
     * @param menu
+    * @throws IOException
     */
-   private static void printCompra(final int from, final int to, final boolean soloStockeable) {
+   private static void printCompra(final int from, final int to, final boolean soloStockeable) throws IOException {
       Preconditions.checkArgument(from != to, "El desde y el hasta, no pueden ser iguales");
-      final List<Plato> platos = createPlatosList(from, to);
-
-      final ArrayListMultimap<Ingrediente, Double> mm = ArrayListMultimap.create();
-      for (final Plato plato : platos) {
-         System.out.println(String.format("%s", plato.getNombre()));
-         for (final Map.Entry<Ingrediente, Double> cosa : plato.getIngredientes().entrySet()) {
-            if(soloStockeable) {
-               if (cosa.getKey().isStockeable()) {
-                  mm.put(cosa.getKey(), cosa.getValue());
-               }
-            } else {
-               mm.put(cosa.getKey(), cosa.getValue());
-            }
-
-         }
-      }
-
-      System.out.println();
       if (soloStockeable) {
          System.out.println("****** Solo stockeables ******");
       }
 
-      for (final Ingrediente ingrediente : mm.keySet()) {
-         double total = 0;
-         for (final Double cantidad : mm.get(ingrediente)) {
-            total = total + cantidad;
-         }
+      imprimirComunes();
 
-         System.out.println(String.format("%s: %s %s", ingrediente, total, ingrediente.getUnidad()));
+      final List<Plato> listaPlatos = createPlatosList(from, to);
+      final TreeMap<Ingrediente, Double> ingredientesMap = bildIngredientesMap(soloStockeable, listaPlatos);
+      System.out.println("----------------");
+      for (final Map.Entry<Ingrediente, Double> entry : ingredientesMap.entrySet()) {
+         System.out.println(String.format("%s: %s %s", entry.getKey(), entry.getValue(), entry.getKey().getUnidad()));
       }
+
+
+      System.out.println("\n-------Platos---------");
+      for (final Plato plato : listaPlatos) {
+         System.out.println(String.format("%s", plato.getNombre()));
+      }
+   }
+
+   /**
+    * @throws IOException
+    */
+   private static void imprimirComunes() throws IOException {
+      final List<String> readLines = FileUtils.readLines(new File("comunes.txt"), "UTF-8");
+      for (final String linea : readLines) {
+         System.out.println(linea);
+      }
+   }
+
+   /**
+    * @param soloStockeable
+    * @param platos
+    * @return
+    */
+   private static TreeMap<Ingrediente, Double> bildIngredientesMap(final boolean soloStockeable, final List<Plato> platos) {
+      final TreeMap<Ingrediente, Double> ingredientesMap = Maps.newTreeMap();
+      for (final Plato plato : platos) {
+         for (final Map.Entry<Ingrediente, Double> cosa : plato.getIngredientes().entrySet()) {
+            final Ingrediente unIngrediente = cosa.getKey();
+            final Double unaCantidad = cosa.getValue();
+
+            if (soloStockeable) {
+               if (unIngrediente.isStockeable()) {
+                  //locura null safe
+                  ingredientesMap.put(unIngrediente,
+                           ingredientesMap.containsKey(unIngrediente) ? ingredientesMap.get(unIngrediente) + unaCantidad
+                                    : unaCantidad);
+               }
+            } else {
+               ingredientesMap.put(unIngrediente, ingredientesMap.containsKey(unIngrediente) ? ingredientesMap.get(unIngrediente)
+                        + unaCantidad : unaCantidad);
+            }
+
+         }
+      }
+      return ingredientesMap;
    }
 
    /**
