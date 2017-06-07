@@ -4,6 +4,7 @@ public enum Ingrediente {
    //el orden de declaracion importa al querer compararlos
    QUESO_MANTECOSO(false, true, false, "grs"),
    ARROZ(true, false, false, "grs."),
+   POLENTA(true, false, false, "grs."),
    FIDEOS(true, false, false, "grs"),
    FIDEOS_SOPA(true, false, false, "grs"),
    LENTEJAS(true, false, false, "grs"),
@@ -48,6 +49,7 @@ public enum Ingrediente {
    CHORIZO_COLORAO(true, true, false, "U"),
    PANCETA(true, true, false, "grs"),
    MERLUZA(false, true, false, "Kg"),
+   CARRE(false, true, false, "Kg"),
    ;
 
    private final boolean stockeable;
