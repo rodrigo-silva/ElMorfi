@@ -50,6 +50,8 @@ public enum Ingrediente {
    PANCETA(true, true, false, "grs"),
    MERLUZA(false, true, false, "Kg"),
    CARRE(false, true, false, "Kg"),
+   SALCHICHAS(false, false, false, "Paquete"),
+   SALCHICHAS_VIENA(false, false, false, "Paquete"),
    ;
 
    private final boolean stockeable;

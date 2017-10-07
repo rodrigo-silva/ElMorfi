@@ -14,6 +14,7 @@ import com.google.common.collect.Maps;
 public class InMemoryDB {
    public static final String RAVIOLES_CON_ESTOFADO = "Ravioles con estofado";
    public static final String MILANESA_CON_PURE = "Milanesa con pure";
+   public static final String MERLUZA_CON_PURE = "Cameruza con pure";
    public static final String MILANESA_CON_ENSALADA = "Milanesa con ensalada";
    public static final String ZAPALLITOS_CON_QUESO = "Zapallitos con queso";
    public static final String G_NOCCHI_SALSA_MIXTA = "GNocchi salsa mixta";
@@ -49,6 +50,11 @@ public class InMemoryDB {
    private static final String CARNE_HORNO = "Carne Horno";
    private static final String CERDO_BATATA_CEBOLLA = "Cerdo con Batatas y cebolla";
    private static final String CAZUELA_POLENTA = "Cazuela polenta";
+   private static final String SALCHICHAS_PURE= "Salchichas con pure";
+   private static final String FIDEOS_SALSA_BOLOGNESA = "Fideos Bolognesa";
+   private static final String FIDEOS_VERDURAS = "Fideos Verduras";
+   private static final String POLENTA_QUESO = "Polenta queso";
+   private static final String FIDEOS_TUCO = "fIDEOS WITH Tucou";
 
    /**
     * @return
@@ -181,6 +187,12 @@ public class InMemoryDB {
 
       unPlato = new Plato(MILANESA_CON_PURE);
       unPlato.putIngrediente(Ingrediente.POLLO, 0.5);
+      unPlato.putIngrediente(Ingrediente.PAPA, 4.0);
+      unPlato.putIngrediente(Ingrediente.HUEVO, 2.0);
+      platosMap.put(unPlato.getNombre(), unPlato);
+
+      unPlato = new Plato(MERLUZA_CON_PURE);
+      unPlato.putIngrediente(Ingrediente.MERLUZA, 1.0);
       unPlato.putIngrediente(Ingrediente.PAPA, 4.0);
       unPlato.putIngrediente(Ingrediente.HUEVO, 2.0);
       platosMap.put(unPlato.getNombre(), unPlato);
@@ -348,6 +360,30 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1.0);
       unPlato.putIngrediente(Ingrediente.BATATA, 2.0);
       unPlato.putIngrediente(Ingrediente.PAPA, 2.0);
+      platosMap.put(unPlato.getNombre(), unPlato);
+
+      unPlato = new Plato(FIDEOS_SALSA_BOLOGNESA);
+      unPlato.putIngrediente(Ingrediente.CEBOLLA, 1.0);
+      unPlato.putIngrediente(Ingrediente.PURE_TOMATE, 0.5);
+      unPlato.putIngrediente(Ingrediente.PICADA, 0.25);
+      unPlato.putIngrediente(Ingrediente.FIDEOS, 0.33);
+      platosMap.put(unPlato.getNombre(), unPlato);
+
+      unPlato = new Plato(FIDEOS_TUCO);
+      unPlato.putIngrediente(Ingrediente.CEBOLLA, 1.0);
+      unPlato.putIngrediente(Ingrediente.PURE_TOMATE, 0.5);
+      unPlato.putIngrediente(Ingrediente.FIDEOS, 0.33);
+      platosMap.put(unPlato.getNombre(), unPlato);
+
+      unPlato = new Plato(SALCHICHAS_PURE);
+      unPlato.putIngrediente(Ingrediente.SALCHICHAS, 1.0);
+      unPlato.putIngrediente(Ingrediente.SALCHICHAS_VIENA, 1.0);
+      unPlato.putIngrediente(Ingrediente.PAPA, 4.0);
+      platosMap.put(unPlato.getNombre(), unPlato);
+
+      unPlato = new Plato(POLENTA_QUESO);
+      unPlato.putIngrediente(Ingrediente.POLENTA, 0.300);
+      unPlato.putIngrediente(Ingrediente.QUESO_MANTECOSO, 0.250);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       return platosMap;
@@ -576,6 +612,76 @@ public class InMemoryDB {
    /**
     * @return
     */
+   private static List<Plato> menu4() {
+      final Map<String, Plato> platosMap = InMemoryDB.getPlatosMap();
+
+      final List<Plato> menu = Lists.newArrayList();
+
+      menu.add(platosMap.get(SALCHICHAS_PURE));
+      menu.add(platosMap.get(FIDEOS_HONGOS_VERDEO));
+      menu.add(platosMap.get(ARROZ_CHINO));
+      menu.add(platosMap.get(MILANESA_CON_PURE));
+      menu.add(platosMap.get(FIDEOS_SALSA_ATUN));
+      menu.add(platosMap.get(SOPA));
+      menu.add(platosMap.get(SOPA));
+      menu.add(platosMap.get(TORTILLA_CON_ENSALADA));
+      menu.add(platosMap.get(FIDEOS_SALSA_BOLOGNESA));
+      menu.add(platosMap.get(RISOTTO));
+      menu.add(platosMap.get(CERDO_BATATA_CEBOLLA));
+      menu.add(platosMap.get(FIDEOS_VERDURAS));
+      menu.add(platosMap.get(POLLO_AL_VERDEO));
+      menu.add(platosMap.get(OMELETTE_CON_FRITAS));
+
+      menu.add(platosMap.get(ENSALADA_GALLEGA));
+      menu.add(platosMap.get(ZAPALLITOS_CON_QUESO));
+      menu.add(platosMap.get(POLENTA_QUESO));
+      menu.add(platosMap.get(POLLO_AL_HORNO_ENSALADA));
+      menu.add(platosMap.get(ARROZ_CHINO));
+      menu.add(platosMap.get(FIDEOS_SALSA_ATUN));
+      menu.add(platosMap.get(TORTILLA_CON_ENSALADA));
+      menu.add(platosMap.get(GUISO_LENTEJAS));
+      menu.add(platosMap.get(GUISO_LENTEJAS));
+      menu.add(platosMap.get(MERLUZA_CON_PURE));
+      menu.add(platosMap.get(BOCADILLOS_DE_ACELGA));
+      menu.add(platosMap.get(RAVIOLES_CON_ESTOFADO));
+      menu.add(platosMap.get(OMELETTE_CON_FRITAS));
+      menu.add(platosMap.get(EMPANADAS_CARNE));
+
+      menu.add(platosMap.get(RISOTTO));
+      menu.add(platosMap.get(FIDEOS_HONGOS_VERDEO));
+      menu.add(platosMap.get(CAZUELA_POLENTA));
+      menu.add(platosMap.get(CAZUELA_POLENTA));
+      menu.add(platosMap.get(TORTILLA_CON_ENSALADA));
+      menu.add(platosMap.get(SOPA));
+      menu.add(platosMap.get(SOPA));
+      menu.add(platosMap.get(ARROZ_CHINO));
+      menu.add(platosMap.get(FIDEOS_SALSA_ACELGA));
+      menu.add(platosMap.get(MILANESA_CON_ENSALADA));
+      menu.add(platosMap.get(CERDO_BATATA_CEBOLLA));
+      menu.add(platosMap.get(OMELETTE_CON_FRITAS));
+      menu.add(platosMap.get(EMPANADAS_ATUN));
+      menu.add(platosMap.get(SALCHICHAS_PURE));
+
+      menu.add(platosMap.get(SALTEADO_FIDEOS));
+      menu.add(platosMap.get(ZAPALLITOS_CON_QUESO));
+      menu.add(platosMap.get(TORTILLA_CON_ENSALADA));
+      menu.add(platosMap.get(PUCHERO));
+      menu.add(platosMap.get(PUCHERO));
+      menu.add(platosMap.get(MERLUZA_CON_PURE));
+      menu.add(platosMap.get(FIDEOS_TUCO));
+      menu.add(platosMap.get(PASTEL_DE_CARNE));
+      menu.add(platosMap.get(ENSALADA_GALLEGA));
+      menu.add(platosMap.get(POLLO_AL_HORNO_ENSALADA));
+      menu.add(platosMap.get(ARROZ_CHINO));
+      menu.add(platosMap.get(FIDEOS_TUCO));
+      menu.add(platosMap.get(EMPANADAS_ATUN));
+      menu.add(platosMap.get(REVUELTO_ARROZ));
+
+      return menu;
+   }
+   /**
+    * @return
+    */
    private static List<Plato> menuInvierno() {
       final Map<String, Plato> platosMap = InMemoryDB.getPlatosMap();
 
@@ -624,7 +730,7 @@ public class InMemoryDB {
       menu.add(platosMap.get(OMELETTE_CON_FRITAS));
       menu.add(platosMap.get(CERDO_BATATA_CEBOLLA));
       menu.add(platosMap.get(EMPANADAS_ATUN));
-      menu.add(platosMap.get(TARTA_VERDURA));
+      menu.add(platosMap.get(PIZZA));
 
       menu.add(platosMap.get(SALTEADO_FIDEOS));
       menu.add(platosMap.get(ZAPALLITOS_CON_QUESO));
@@ -633,13 +739,13 @@ public class InMemoryDB {
       menu.add(platosMap.get(PUCHERO));
       menu.add(platosMap.get(MILANESA_CON_PURE));
       menu.add(platosMap.get(ENSALADA_GALLEGA));
-      menu.add(platosMap.get(EMPANADAS_CARNE));
-      menu.add(platosMap.get(REVUELTO_ARROZ));
+      menu.add(platosMap.get(PASTEL_DE_CARNE));
+      menu.add(platosMap.get(TARTA_VERDURA));
       menu.add(platosMap.get(POLLO_AL_HORNO_ENSALADA));
       menu.add(platosMap.get(ARROZ_CHINO));
       menu.add(platosMap.get(PASTA_SALSA));
       menu.add(platosMap.get(EMPANADAS_ATUN));
-      menu.add(platosMap.get(PIZZA));
+      menu.add(platosMap.get(REVUELTO_ARROZ));
 
       return menu;
    }
