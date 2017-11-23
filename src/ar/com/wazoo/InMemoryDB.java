@@ -52,7 +52,6 @@ public class InMemoryDB {
    private static final String CAZUELA_POLENTA = "Cazuela polenta";
    private static final String SALCHICHAS_PURE= "Salchichas con pure";
    private static final String FIDEOS_SALSA_BOLOGNESA = "Fideos Bolognesa";
-   private static final String FIDEOS_VERDURAS = "Fideos Verduras";
    private static final String POLENTA_QUESO = "Polenta queso";
    private static final String FIDEOS_TUCO = "fIDEOS WITH Tucou";
 
@@ -393,7 +392,7 @@ public class InMemoryDB {
     * @return
     */
    public static List<Plato> getMenu() {
-      return menuInvierno();
+      return menu4();
    }
 
    /**
@@ -620,7 +619,7 @@ public class InMemoryDB {
       menu.add(platosMap.get(SALCHICHAS_PURE));
       menu.add(platosMap.get(FIDEOS_HONGOS_VERDEO));
       menu.add(platosMap.get(ARROZ_CHINO));
-      menu.add(platosMap.get(MILANESA_CON_PURE));
+      menu.add(platosMap.get(MILANESA_CON_ENSALADA));
       menu.add(platosMap.get(FIDEOS_SALSA_ATUN));
       menu.add(platosMap.get(SOPA));
       menu.add(platosMap.get(SOPA));
@@ -628,7 +627,7 @@ public class InMemoryDB {
       menu.add(platosMap.get(FIDEOS_SALSA_BOLOGNESA));
       menu.add(platosMap.get(RISOTTO));
       menu.add(platosMap.get(CERDO_BATATA_CEBOLLA));
-      menu.add(platosMap.get(FIDEOS_VERDURAS));
+      menu.add(platosMap.get(SALTEADO_FIDEOS));
       menu.add(platosMap.get(POLLO_AL_VERDEO));
       menu.add(platosMap.get(OMELETTE_CON_FRITAS));
 
