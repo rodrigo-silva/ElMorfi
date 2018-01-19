@@ -28,6 +28,10 @@ public class Plato {
       this.ingredientes.put(ingrediente, cuanto);
    }
 
+   public void putIngrediente(final Ingrediente ingrediente, final Integer cuanto) {
+      this.ingredientes.put(ingrediente, Double.valueOf(cuanto));
+   }
+
    @Override
    public String toString() {
       final StringBuilder sb = new StringBuilder();
