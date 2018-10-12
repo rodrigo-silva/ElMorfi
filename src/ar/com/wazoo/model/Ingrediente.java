@@ -6,11 +6,13 @@ public enum Ingrediente {
    ARROZ(true, false, false, "grs."),
    POLENTA(true, false, false, "grs."),
    FIDEOS(true, false, false, "grs"),
+   FIDEOS_TACC(true, false, false, "grs"),
    FIDEOS_SOPA(true, false, false, "grs"),
    LENTEJAS(true, false, false, "grs"),
    NOQUIS(false, true, false, "grs"),
    RAVIOLES(false, true, false, "planchas"),
    TAPAS(false, true, false, "paquete"),
+   TAPAS_TACC(false, true, false, "paquete"),
    POLLO(true, true, false, "U"),
    JAMON(false, true, false, "grs"),
    QUESO_MUZZARELLA(false, true, false, "grs"),
@@ -32,14 +34,16 @@ public enum Ingrediente {
    LIMON(true, true, true, "U"),
    MORRON(false, true, true, "U"),
    REPOLLO(false, true, true, "U"),
-   RUCULA(false, true, true, "grs"),
+   RUCULA(false, true, true, "atado"),
    HUEVO(false, true, false, "U"),
 
    PICADA(false, true, false, "grs"),
    OSOBUCO(false, true, false, "grs"),
    FALDA(false, true, false, "grs"),
    ARVEJA(true, true, false, "lata"),
-   VACIO(false, true, false, "grs"),
+   CARNE_HORNO(false, true, false, "grs"),
+   CARNE_ESTOFADO(false, true, false, "grs"),
+   CARNE_SALTEADO(false, true, false, "grs"),
    RICOTA(false, true, false, "grs"),
    PURE_TOMATE(true, false, false, "Envase"),
    ATUN(true, false, false, "lata"),
@@ -52,12 +56,15 @@ public enum Ingrediente {
    CARRE(false, true, false, "Kg"),
    SALCHICHAS(false, false, false, "Paquete"),
    SALCHICHAS_VIENA(false, false, false, "Paquete"),
+   HAMBURGUESA(false, false, false, "U"),
+   PATITAS(false, false, false, "Bandeja"),
+   ESPINACA(false, true, true, "atado"),
    ;
 
    private final boolean stockeable;
-   private final String unidad;
-   private final boolean vegetal;
    private final boolean perecedero;
+   private final boolean vegetal;
+   private final String unidad;
 
    /**
     * @param stockeable

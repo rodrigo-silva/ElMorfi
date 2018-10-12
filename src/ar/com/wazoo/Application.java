@@ -2,9 +2,11 @@ package ar.com.wazoo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import org.apache.commons.io.FileUtils;
@@ -27,7 +29,10 @@ public class Application {
             }
          }
          if (args[0].equals("-m")) {
-            printMenu();
+            exportMenu();
+         }
+         if (args[0].equals("-p")) {
+            printPlatos();
          }
 
       } else {
@@ -88,7 +93,7 @@ public class Application {
 
       System.out.println("\n-------Platos---------");
       for (final Plato plato : listaPlatos) {
-         System.out.println(String.format("%s", plato.getNombre()));
+         System.out.println(String.format("%s %s", plato.getNombre(), plato.getIngredientes()));
       }
    }
 
@@ -150,16 +155,66 @@ public class Application {
 
    /**
     * @param menu
+    * @throws IOException 
     */
-   private static void printMenu() {
+   private static void exportMenu() throws IOException {
       final List<Plato> menu = InMemoryDB.getMenu();
-      for (final Iterator<Plato> iterator = menu.iterator(); iterator.hasNext();) {
-         for (int i = 0; i < 7; i++) {
-            System.out.println(String.format("%s | %s", iterator.next().getNombre(), iterator.next().getNombre()));
-         }
-         System.out.println("-------------------");
+      StringBuffer sb = new StringBuffer();
+      sb.append("<html><head><style></style></head><body><table>");
 
+      sb.append("<tr>");
+
+      sb.append("<th style=\"border: 1px solid black\">");
+      sb.append("<div style=\"padding: 10px;\">Lunes</div>");
+      sb.append("</th>");
+      sb.append("<th style=\"border: 1px solid black\">");
+      sb.append("<div style=\"padding: 10px;\">Martes</div>");
+      sb.append("</th>");
+      sb.append("<th style=\"border: 1px solid black\">");
+      sb.append("<div style=\"padding: 10px;\">Miercoles</div>");
+      sb.append("</th>");
+      sb.append("<th style=\"border: 1px solid black\">");
+      sb.append("<div style=\"padding: 10px;\">Jueves</div>");
+      sb.append("</th>");
+      sb.append("<th style=\"border: 1px solid black\">");
+      sb.append("<div style=\"padding: 10px;\">Viernes</div>");
+      sb.append("</th>");
+      sb.append("<th style=\"border: 1px solid black\">");
+      sb.append("<div style=\"padding: 10px;\">Sabado</div>");
+      sb.append("</th>");
+      sb.append("<th style=\"border: 1px solid black\">");
+      sb.append("<div style=\"padding: 10px;\">Domingo</div>");
+      sb.append("</th>");
+      
+      sb.append("</tr>");
+      
+      for (final Iterator<Plato> iterator = menu.iterator(); iterator.hasNext();) {
+
+         sb.append("<tr>");
+         for (int i = 0; i < 7; i++) {
+            sb.append("<td style=\"border: 1px solid black\">");
+            sb.append(String.format("<div style=\"padding: 10px;\">%s</div>", iterator.next().getNombre()));
+            sb.append(String.format("<div style=\"padding: 10px;\">%s</div>", iterator.next().getNombre()));
+            sb.append("</td>");
+         }
+         sb.append("</tr>");
       }
+      sb.append("</table></body></html>");
+      FileUtils.writeStringToFile(new File(System.getProperty("user.home") + "\\Desktop\\menu.html"), sb.toString(), "UTF-8");
    }
 
+   /**
+    * @param menu
+    */
+   private static void printPlatos() {
+      final Collection<Plato> platos = InMemoryDB.getPlatosMap().values();
+      for (Plato plato : platos) {
+         System.out.println(String.format("%s: ", plato.getNombre()));
+
+         final Map<Ingrediente, Double> ingredientes = plato.getIngredientes();
+         for (Entry<Ingrediente, Double> e : ingredientes.entrySet()) {
+            System.out.println(String.format("\t%s:%s %s, ", e.getKey().name(), e.getValue(), e.getKey().getUnidad()));
+         }
+      }
+   }
 }
