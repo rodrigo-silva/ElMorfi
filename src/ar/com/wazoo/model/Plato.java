@@ -7,6 +7,9 @@ public class Plato {
    private final String nombre;
    private final Map<Ingrediente, Double> ingredientes;
    private String cssRule;
+   private boolean carbohidrato;
+   private boolean caliente;
+   private Caracteristica caracteristica;
 
    /**
     * @param nombre
@@ -16,6 +19,9 @@ public class Plato {
       this.nombre = nombre;
       this.ingredientes = new HashMap<Ingrediente, Double>();
       this.cssRule = "";
+      this.carbohidrato = false;
+      this.caliente = false;
+      this.caracteristica = Caracteristica.INDIFERENTE;
    }
 
    public String getNombre() {
@@ -44,7 +50,7 @@ public class Plato {
    /**
     * @param cssRule the cssRule to set
     */
-   public void setCssRule(String cssRule) {
+   public void setCssRule(final String cssRule) {
       this.cssRule = cssRule;
    }
 
@@ -59,8 +65,32 @@ public class Plato {
       }
       return sb.toString();
    }
+   
+   public boolean isCarbohidrato() {
+      return carbohidrato;
+   }
+   
+   public void setCarbohidrato(boolean carbohidrato) {
+      this.carbohidrato = carbohidrato;
+   }
+   
+   public boolean isCaliente() {
+      return caliente;
+   }
+   
+   public void setCaliente(boolean caliente) {
+      this.caliente = caliente;
+   }
+   
+   public Caracteristica getCaracteristica() {
+      return caracteristica;
+   }
+   
+   public void setCaracteristica(Caracteristica caracteristica) {
+      this.caracteristica = caracteristica;
+   }
 
-   public enum Tipo {
-      VERDURA, CARNE, PASTA
+   public enum Caracteristica {
+      INDIFERENTE, ARROZ, POLLO, ENSALADA
    }
 }
