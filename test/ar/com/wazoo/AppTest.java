@@ -6,7 +6,7 @@ public class AppTest {
 
    @Test
    public void test() throws Exception{
-      Application.main(new String[] { "-c", "4", "5", "n", "1", "6", "n"});
+      Application.main(new String[] { "-c", "1", "5", "n", "2", "6", "m"});
 //      Application.main(new String[] { "-m" });
    }
    
@@ -18,5 +18,10 @@ public class AppTest {
    @Test
    public void testPlatos() throws Exception{
       Application.main(new String[] { "-p" });
+   }
+
+   @Test
+   public void testPlatosDelMenu() throws Exception{
+      Application.main(new String[] { "-pm" });
    }
 }

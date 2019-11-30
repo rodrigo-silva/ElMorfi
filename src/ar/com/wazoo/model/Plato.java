@@ -6,6 +6,7 @@ import java.util.Map;
 public class Plato {
    private final String nombre;
    private final Map<Ingrediente, Double> ingredientes;
+   private String cssRule;
 
    /**
     * @param nombre
@@ -14,6 +15,7 @@ public class Plato {
       super();
       this.nombre = nombre;
       this.ingredientes = new HashMap<Ingrediente, Double>();
+      this.cssRule = "";
    }
 
    public String getNombre() {
@@ -30,6 +32,20 @@ public class Plato {
 
    public void putIngrediente(final Ingrediente ingrediente, final Integer cuanto) {
       this.ingredientes.put(ingrediente, Double.valueOf(cuanto));
+   }
+
+   /**
+    * @return the cssRule
+    */
+   public String getCssRule() {
+      return cssRule;
+   }
+
+   /**
+    * @param cssRule the cssRule to set
+    */
+   public void setCssRule(String cssRule) {
+      this.cssRule = cssRule;
    }
 
    @Override

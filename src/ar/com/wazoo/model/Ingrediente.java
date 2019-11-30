@@ -57,8 +57,11 @@ public enum Ingrediente {
    SALCHICHAS(false, false, false, "Paquete"),
    SALCHICHAS_VIENA(false, false, false, "Paquete"),
    HAMBURGUESA(false, false, false, "U"),
-   PATITAS(false, false, false, "Bandeja"),
+   PATITAS(false, false, false, "grs"),
    ESPINACA(false, true, true, "atado"),
+   PAN_SANGUCHE(false, false, false, "unidades"),
+   PECHUGA(false, true, false, "grs"),   
+   PEPINO(false, true, true, "u"),
    ;
 
    private final boolean stockeable;
