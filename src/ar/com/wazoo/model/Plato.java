@@ -44,6 +44,9 @@ public class Plato {
     * @return the cssRule
     */
    public String getCssRule() {
+      if(this.carbohidrato) {
+         return cssRule + ";font-weight: bold;";
+      }
       return cssRule;
    }
 
@@ -91,6 +94,6 @@ public class Plato {
    }
 
    public enum Caracteristica {
-      INDIFERENTE, ARROZ, POLLO, ENSALADA
+      INDIFERENTE, ARROZ, POLLO, ENSALADA, CARNE, PESCADO
    }
 }

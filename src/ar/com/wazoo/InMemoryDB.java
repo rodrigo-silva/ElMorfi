@@ -5,6 +5,7 @@ import java.util.Map;
 
 import ar.com.wazoo.model.Ingrediente;
 import ar.com.wazoo.model.Plato;
+import ar.com.wazoo.model.Plato.Caracteristica;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -73,11 +74,6 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.QUESO_MANTECOSO, 200);
       platosMap.put(unPlato.getNombre(), unPlato);
 
-      unPlato = new Plato(ARROZ_HONGOS_VERDEO);
-      unPlato.putIngrediente(Ingrediente.ARROZ, 300);
-      unPlato.putIngrediente(Ingrediente.VERDEO, 4);
-      platosMap.put(unPlato.getNombre(), unPlato);
-
       unPlato = new Plato(ARROZ_CHINO);
       unPlato.putIngrediente(Ingrediente.MORRON, 1);
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 2);
@@ -85,12 +81,15 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1);
       unPlato.putIngrediente(Ingrediente.HUEVO, 3);
       unPlato.putIngrediente(Ingrediente.ARROZ, 300);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.ARROZ);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(FIDEOS_SALSA_ACELGA);
       unPlato.putIngrediente(Ingrediente.ACELGA, 1);
       unPlato.putIngrediente(Ingrediente.FIDEOS, 300);
       unPlato.putIngrediente(Ingrediente.FIDEOS_TACC, 100);
+      unPlato.setCarbohidrato(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(EMPANADAS_ATUN);
@@ -101,6 +100,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.HUEVO, 3);
       unPlato.putIngrediente(Ingrediente.TAPAS, 1);
       unPlato.putIngrediente(Ingrediente.TAPAS_TACC, 0.3);
+      unPlato.setCarbohidrato(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(OMELETTE_CON_FRITAS);
@@ -108,6 +108,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.JAMON, 100);
       unPlato.putIngrediente(Ingrediente.QUESO_MANTECOSO, 250);
       unPlato.putIngrediente(Ingrediente.PAPA, 4);
+      unPlato.setCarbohidrato(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(ZAPALLITOS_CON_QUESO);
@@ -116,6 +117,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.PURE_TOMATE, 0.75);
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1);
       unPlato.putIngrediente(Ingrediente.ARROZ, 300);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.ARROZ);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(MILANESA_CON_PURE);
@@ -123,6 +126,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.PECHUGA, 500);
       unPlato.putIngrediente(Ingrediente.PAPA, 2);
       unPlato.putIngrediente(Ingrediente.ZAPALLO, 1);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.POLLO);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(MILANESA_CON_ENSALADA);
@@ -131,6 +136,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.LECHUGA, 0.5);
       unPlato.putIngrediente(Ingrediente.TOMATE, 2);
       unPlato.putIngrediente(Ingrediente.RUCULA, 0.5);
+      unPlato.setCaracteristica(Caracteristica.POLLO);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(ENSALADA_GALLEGA);
@@ -141,6 +147,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.ATUN, 1);
       unPlato.putIngrediente(Ingrediente.PEPINO, 2);
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 2);
+      unPlato.setCarbohidrato(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(POLLO_AL_VERDEO);
@@ -148,6 +155,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.VERDEO, 3);
       unPlato.putIngrediente(Ingrediente.PECHUGA, 500);
       unPlato.putIngrediente(Ingrediente.ARROZ, 350);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.POLLO);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(PASTEL_DE_CARNE);
@@ -158,6 +167,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.MORRON, 1);
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1);
       unPlato.putIngrediente(Ingrediente.HUEVO, 3);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.CARNE);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(POLLO_PLANCHA);
@@ -166,6 +177,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 2);
       unPlato.putIngrediente(Ingrediente.LECHUGA, 0.5);
       unPlato.putIngrediente(Ingrediente.PECHUGA, 500);
+      unPlato.setCaracteristica(Caracteristica.POLLO);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(FIDEOS_SALSA_ATUN);
@@ -175,6 +187,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1);
       unPlato.putIngrediente(Ingrediente.FIDEOS, 300);
       unPlato.putIngrediente(Ingrediente.FIDEOS_TACC, 100);
+      unPlato.setCarbohidrato(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(EMPANADAS_CARNE);
@@ -186,6 +199,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.TAPAS, 1);
       unPlato.putIngrediente(Ingrediente.TAPAS_TACC, 0.3);
       unPlato.putIngrediente(Ingrediente.PICADA, 500);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.CARNE);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(FIDEOS_SALTEADOS);
@@ -195,6 +210,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.MORRON, 1);
       unPlato.putIngrediente(Ingrediente.FIDEOS, 300);
       unPlato.putIngrediente(Ingrediente.FIDEOS_TACC, 100);
+      unPlato.setCarbohidrato(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(PUCHERO);
@@ -205,6 +221,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 1);
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1);
       unPlato.putIngrediente(Ingrediente.ZAPALLO, 0.25);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaliente(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(SOPA);
@@ -215,6 +233,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.CHOCLO, 1);
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1);
       unPlato.putIngrediente(Ingrediente.FIDEOS_SOPA, 500);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaliente(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(SOPA_POLENTA);
@@ -226,6 +246,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 0.5);
       unPlato.putIngrediente(Ingrediente.POLENTA, 250);
       unPlato.putIngrediente(Ingrediente.QUESO_MANTECOSO, 250);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaliente(true);
       platosMap.put(unPlato.getNombre(), unPlato);
       
       unPlato = new Plato(GUISO_LENTEJAS);
@@ -239,6 +261,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.CHORIZO_COLORAO, 0.5);
       unPlato.putIngrediente(Ingrediente.PANCETA, 100);
       unPlato.putIngrediente(Ingrediente.PURE_TOMATE, 0.75);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaliente(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(REVUELTO_ARROZ);
@@ -246,6 +270,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.CEBOLLA, 1);
       unPlato.putIngrediente(Ingrediente.HUEVO, 4);
       unPlato.putIngrediente(Ingrediente.ARROZ, 350);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.ARROZ);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(FIDEOS_SALSA_BOLOGNESA);
@@ -256,6 +282,9 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.PICADA, 250);
       unPlato.putIngrediente(Ingrediente.FIDEOS, 300);
       unPlato.putIngrediente(Ingrediente.FIDEOS_TACC, 100);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.CARNE);
+      unPlato.setCaliente(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
 
@@ -263,13 +292,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.PATITAS, 360);
       unPlato.putIngrediente(Ingrediente.PAPA, 2);
       unPlato.putIngrediente(Ingrediente.ZAPALLO, 1);
-      platosMap.put(unPlato.getNombre(), unPlato);
-      
-      unPlato = new Plato(POLENTA_ACELGA);
-      unPlato.putIngrediente(Ingrediente.ACELGA, 2);
-      unPlato.putIngrediente(Ingrediente.POLENTA, 250);
-      unPlato.putIngrediente(Ingrediente.QUESO_MANTECOSO, 200);
-      unPlato.putIngrediente(Ingrediente.ZANAHORIA, 1);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.POLLO);
       platosMap.put(unPlato.getNombre(), unPlato);
       
       unPlato = new Plato(MERLUZA_HORNO);
@@ -279,6 +303,9 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 2);
       unPlato.putIngrediente(Ingrediente.VERDEO, 2);
       unPlato.putIngrediente(Ingrediente.PAPA, 3);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaliente(true);
+      unPlato.setCaracteristica(Caracteristica.PESCADO);
       platosMap.put(unPlato.getNombre(), unPlato);
       
       unPlato = new Plato(TORTILLA_ATUN);
@@ -300,6 +327,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 2);
       unPlato.putIngrediente(Ingrediente.ZAPALLITO, 2);
       unPlato.putIngrediente(Ingrediente.ARROZ, 250);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.POLLO);
       platosMap.put(unPlato.getNombre(), unPlato);
       
       unPlato = new Plato(HAMBURGUESAS_CASERAS);
@@ -309,6 +338,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.HUEVO, 1);
       unPlato.putIngrediente(Ingrediente.PAPA, 4);
       unPlato.putIngrediente(Ingrediente.PAN_SANGUCHE, 3);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaracteristica(Caracteristica.CARNE);
       platosMap.put(unPlato.getNombre(), unPlato);
       
       unPlato = new Plato(POLENTA_QUESO_SALSA);
@@ -319,6 +350,8 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 1);
       unPlato.putIngrediente(Ingrediente.PICADA, 250);
       unPlato.putIngrediente(Ingrediente.QUESO_MANTECOSO, 200);
+      unPlato.setCarbohidrato(true);
+      unPlato.setCaliente(true);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       unPlato = new Plato(TARTA_J_Q);
@@ -330,6 +363,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.LECHUGA, 0.5);
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 1);
       unPlato.putIngrediente(Ingrediente.TAPA_TARTA, 0.5);
+      unPlato.setCarbohidrato(true);
       platosMap.put(unPlato.getNombre(), unPlato);
       
       unPlato = new Plato(CAZUELA_DE_POLLO);
@@ -340,6 +374,7 @@ public class InMemoryDB {
       unPlato.putIngrediente(Ingrediente.PURE_TOMATE, 0.25);
       unPlato.putIngrediente(Ingrediente.ZANAHORIA, 2);
       unPlato.putIngrediente(Ingrediente.ARVEJA, 1);
+      unPlato.setCaracteristica(Caracteristica.POLLO);
       platosMap.put(unPlato.getNombre(), unPlato);
 
       return platosMap;

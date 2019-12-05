@@ -3,7 +3,6 @@ package ar.com.wazoo;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -14,6 +13,7 @@ import org.apache.commons.io.FileUtils;
 
 import ar.com.wazoo.model.Ingrediente;
 import ar.com.wazoo.model.Plato;
+import ar.com.wazoo.tool.HtmlHelper;
 
 import com.google.common.base.Preconditions;
 import com.google.common.collect.Maps;
@@ -164,54 +164,8 @@ public class Application {
     * @throws IOException 
     */
    private static void exportMenu() throws IOException {
-      final List<Plato> menu = InMemoryDB.getMenu();
-      StringBuffer sb = new StringBuffer();
-      sb.append("<html><head><style>");
-      sb.append("th,td{border: 1px solid black;}");
-      sb.append("th div, td div{padding: 10px;}");
-      sb.append("</style></head><body><table>");
-
-      sb.append("<tr>");
-
-      sb.append("<th>");
-      sb.append("<div>Lunes</div>");
-      sb.append("</th>");
-      sb.append("<th>");
-      sb.append("<div>Martes</div>");
-      sb.append("</th>");
-      sb.append("<th>");
-      sb.append("<div>Miercoles</div>");
-      sb.append("</th>");
-      sb.append("<th>");
-      sb.append("<div>Jueves</div>");
-      sb.append("</th>");
-      sb.append("<th>");
-      sb.append("<div>Viernes</div>");
-      sb.append("</th>");
-      sb.append("<th>");
-      sb.append("<div>Sabado</div>");
-      sb.append("</th>");
-      sb.append("<th>");
-      sb.append("<div>Domingo</div>");
-      sb.append("</th>");
-      
-      sb.append("</tr>");
-      
-      for (final Iterator<Plato> iterator = menu.iterator(); iterator.hasNext();) {
-
-         sb.append("<tr>");
-         for (int i = 0; i < 7; i++) {
-            sb.append("<td>");
-            final Plato almuerzo = iterator.next();
-            final Plato cena = iterator.next();
-            sb.append(String.format("<div style=\"%s\">%s</div>", almuerzo.getCssRule(), almuerzo.getNombre()));
-            sb.append(String.format("<div style=\"%s\">%s</div>",cena.getCssRule(), cena.getNombre()));
-            sb.append("</td>");
-         }
-         sb.append("</tr>");
-      }
-      sb.append("</table></body></html>");
-      FileUtils.writeStringToFile(new File(System.getProperty("user.home") + "\\Desktop\\menu.html"), sb.toString(), "UTF-8");
+      final String htmlMenu = HtmlHelper.buildHtmlMenu(InMemoryDB.getMenu());
+      FileUtils.writeStringToFile(new File(System.getProperty("user.home") + "\\Desktop\\menu.html"), htmlMenu, "UTF-8");
    }
 
    /**
